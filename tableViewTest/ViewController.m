@@ -16,12 +16,26 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    _tableV.delegate = self;
+    _tableV.dataSource = self;
     // Do any additional setup after loading the view, typically from a nib.
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+-(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
+    return 5;
 }
+
+-(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
+    return 1;
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
+    UITableViewCell *cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:@""];
+    cell.textLabel.text = @"abc";
+    cell.detailTextLabel.text = [NSString stringWithFormat:@"%d",indexPath.row];
+    return cell;
+}
+
+
 
 @end
